@@ -7957,7 +7957,7 @@
           {
             key: 'onClick',
             value: function(e) {
-              e.preventDefault(), (window.location = '/test-repo/build/courses/' +
+              e.preventDefault(), (window.location.href = '/test-repo/build/courses/' +
                 e.target.id);
             },
           },
