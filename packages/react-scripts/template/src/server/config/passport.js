@@ -49,9 +49,7 @@ const localLogin = new LocalStrategy(
           return done(err);
         }
         if (!isMatch) {
-          return done(null, false, {
-            error: 'Your login details could not be verified. Please try again.',
-          });
+          return done(null, false);
         }
         console.log('Success!');
         return done(null, instructor);
