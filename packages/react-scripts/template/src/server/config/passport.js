@@ -32,7 +32,7 @@ const localLogin = new LocalStrategy(
   {
     passReqToCallback: true,
   },
-  function(username, password, done) {
+  function(req, username, password, done) {
     console.log('This is getting called!');
     Instructor.findOne({ username: username }, function(err, instructor) {
       if (err) {
