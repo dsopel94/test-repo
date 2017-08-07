@@ -18,6 +18,7 @@ const passport = require('passport');
 
 app.use(express.static('./server'));
 app.use(express.static('../dist'));
+app.use(flash());
 
 // Database Setup
 // mongoose.connect(config.dbUri);
