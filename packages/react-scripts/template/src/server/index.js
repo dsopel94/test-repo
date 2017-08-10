@@ -10,8 +10,7 @@ const periods = require('./routes/period.routes');
 const students = require('./routes/student.routes');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
-const session = require('express-sessions');
-const redis = require('redis');
+const session = require('express-session');
 logger = require('morgan');
 const router = require('./routes/router');
 // const home = require('./routse/home.routes')
@@ -19,6 +18,8 @@ const passport = require('passport');
 
 app.use(express.static('./server'));
 app.use(express.static('../dist'));
+app.use(cookieParser('secret'));
+app.use(session({ cookie: { maxAge: 60000 } }));
 app.use(flash());
 
 // Database Setup
