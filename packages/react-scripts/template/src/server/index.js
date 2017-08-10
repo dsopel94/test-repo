@@ -46,7 +46,6 @@ function runServer(databaseUrl = config.dbUri, port = '55631') {
 //app.use(express.cookieParser('keyboard cat'));
 //app.use(express.session({ cookie: { maxAge: 60000 } }));
 //app.use(flash());
-var app = express();
 app.use(
   express.session({
     secret: 'a4f8071f-c873-4447-8ee2',
