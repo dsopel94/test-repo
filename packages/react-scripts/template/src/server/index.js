@@ -10,7 +10,8 @@ const periods = require('./routes/period.routes');
 const students = require('./routes/student.routes');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
+const session = require('express-sessions');
+const redis = require('redis');
 logger = require('morgan');
 const router = require('./routes/router');
 // const home = require('./routse/home.routes')
@@ -45,6 +46,16 @@ function runServer(databaseUrl = config.dbUri, port = '55631') {
 //app.use(express.cookieParser('keyboard cat'));
 //app.use(express.session({ cookie: { maxAge: 60000 } }));
 //app.use(flash());
+var app = express();
+app.use(
+  express.session({
+    secret: 'a4f8071f-c873-4447-8ee2',
+    cookie: { maxAge: 2628000000 },
+    store: new (require('express-sessions'))({
+      storage: 'redis',
+    }),
+  })
+);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
