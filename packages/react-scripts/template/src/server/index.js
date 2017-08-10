@@ -42,6 +42,11 @@ function runServer(databaseUrl = config.dbUri, port = '55631') {
 }
 
 // Import routes to be served
+app.configure(function() {
+  app.use(express.cookieParser('keyboard cat'));
+  app.use(express.session({ cookie: { maxAge: 60000 } }));
+  app.use(flash());
+});
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
