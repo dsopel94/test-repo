@@ -65,7 +65,7 @@ const jwtOptions = {
   secretOrKey: config.jwt,
 };
 
-const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
+const jwtLogin = new JwtStrategy(jwtOptions, function(req, payload, done) {
   Instructor.findById(payload._id, function(err, instructor) {
     if (err) {
       return done(err, false);
